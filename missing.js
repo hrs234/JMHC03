@@ -1,12 +1,32 @@
 let num = "12346";
-console.log("maju");
-for (let init = 0; init < num.length; init++) {
-  console.log("hasil", parseInt(num[init]));
-}
-console.log("mundur");
-for (let tes = num.length + 1; tes > 0; tes--) {
-  console.log(tes);
-}
-// for (let tes = 0; num.length + 1 > tes; tes++) {
-//   console.log(tes);
-// }
+
+let generateNum = data => {
+  let rev = [];
+  let revA = [];
+  for (let tes = data.length + 1; tes > 0; tes--) {
+    rev.push(tes);
+  }
+  for (let tes = rev.length - 1; tes >= 0; tes--) {
+    revA.push(rev[tes]);
+  }
+  return revA;
+};
+
+let checkNumber = data => {
+  let save = [];
+  for (let init = 0; init < data.length; init++) {
+    save.push(parseInt(data[init]));
+  }
+  return save;
+};
+
+let mainProcess = data => {
+  let gen = generateNum(data);
+  for (let init = 0; init < data.length; init++) {
+    if (parseInt(data[init]) !== parseInt(gen[init])) {
+      return gen[init];
+    }
+  }
+};
+
+console.log(mainProcess(num));
